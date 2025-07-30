@@ -29,4 +29,7 @@ public class ProductService {
         product.setImageData(imageFile.getBytes());
         return repo.save(product);
     }
+
+    public Product updateProduct(int id, Product product, MultipartFile imageFile) {
+    }
 }

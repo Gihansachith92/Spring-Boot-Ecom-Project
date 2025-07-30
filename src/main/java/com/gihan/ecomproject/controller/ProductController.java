@@ -52,4 +52,13 @@ public class ProductController {
         return ResponseEntity.ok().contentType(MediaType.valueOf(product.getImageType())).body(imageFile);
     }
 
+    @PutMapping("/product/{id}")
+    public ResponseEntity<String> updateProduct(@PathVariable int id, @RequestPart Product product , @RequestPart MultipartFile imageFile){
+        Product product1 = service.updateProduct(id,product,imageFile);
+        if(product1 != null)
+            return new ResponseEntity<>("Updated", HttpStatus.OK);
+        else
+            return new ResponseEntity<>("Failed to update", HttpStatus.BAD_REQUEST);
+    }
+
 }
